@@ -20,5 +20,6 @@ const Route = use('Route')
 Route.on('/').render('home')
 Route.on('/add').render('add')
 Route.get('/tasks', 'TaskController.index')
+Route.get('/task/:id', 'TaskController.detail')
 Route.post ('/add', 'TaskController.store')
 
