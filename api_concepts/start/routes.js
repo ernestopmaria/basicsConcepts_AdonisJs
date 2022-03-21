@@ -27,3 +27,6 @@ Route.delete('/delete/:id' , 'UserController.delete')
 Route.get('/tarefa' , 'TarefaController.index')
 
 Route.resource('tarefa' , 'TarefaController').apiOnly().middleware('auth')
+
+Route.post('/tarefa/:id/arquivo' , 'ArquivoController.create')
+
