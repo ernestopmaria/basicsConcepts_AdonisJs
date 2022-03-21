@@ -20,5 +20,6 @@ Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
 
-Route.post('/register' , 'UserController.create')
+Route.post('/register' , 'UserController.create').validator('User')
 Route.get('/list' , 'UserController.index')
+Route.delete('/delete/:id' , 'UserController.delete')
