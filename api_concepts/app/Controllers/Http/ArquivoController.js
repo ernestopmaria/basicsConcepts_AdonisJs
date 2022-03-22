@@ -28,7 +28,7 @@ class ArquivoController {
         arquivos.movedList().map(item=> Arquivo.create({tarefa_id:tarefa.id, caminho:item.fileName}))
       )
 
-      return response.status(200).send()
+      return response.status(200).send({message:"Arquivos inseridos com sucesso"})
 
     } catch {
       return response.status(500).send({erro: "ocorreu um erro ao fazer upload"})

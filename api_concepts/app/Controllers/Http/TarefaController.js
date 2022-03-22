@@ -1,6 +1,6 @@
 'use strict'
 
-const Tarefa = use('App/Models/Tarefa')
+const Tarefa =use('App/Models/Tarefa')
 const Database = use('Database')
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
@@ -20,11 +20,11 @@ class TarefaController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, }) {
+  async index ({ auth,request, response }) {
 
-    const tarefa = await Tarefa.all()
-    //const tarefa = Database.select('titulo', 'descrição').from('tarefas')
-   // .where("user_id" , auth.user.id)
+    const tarefa = await Tarefa.query().where('user_id' , auth.user.id).withCount('arquivos as total_arquivos').fetch()
+
+  
     return tarefa
   }
 
@@ -52,7 +52,7 @@ class TarefaController {
 
     if(!tarefa){
       return response.status(404).send({message: "Nenhum registro encontrado"})
-    }
+    }await tarefa.load('arquivos')
     return tarefa
   }
 

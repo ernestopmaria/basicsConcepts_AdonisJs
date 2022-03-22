@@ -24,8 +24,6 @@ Route.post('/register' , 'UserController.create').validator('User')
 Route.post('/session' , 'UserController.login')
 Route.get('/list' , 'UserController.index')
 Route.delete('/delete/:id' , 'UserController.delete')
-Route.get('/tarefa' , 'TarefaController.index')
-
 Route.resource('tarefa' , 'TarefaController').apiOnly().middleware('auth')
 
 Route.post('/tarefa/:id/arquivo' , 'ArquivoController.create')
